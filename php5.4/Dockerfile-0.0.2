@@ -1,0 +1,14 @@
+
+# PHP 容器配置
+
+# 从官方基础版本构建
+FROM registry.cn-hangzhou.aliyuncs.com/xuweiguo/docker-git-php-5.4-fpm:0.0.1
+
+# 0.0.2 增加 bz2 扩展, 读写 bzip2（.bz2）压缩文件
+RUN apt-get update && \
+apt-get install -y --no-install-recommends libbz2-dev && \
+rm -r /var/lib/apt/lists/* && \
+docker-php-ext-install  bz2
+
+EXPOSE 9000
+CMD ["php-fpm"]

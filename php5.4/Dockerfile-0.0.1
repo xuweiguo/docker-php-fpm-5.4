@@ -1,0 +1,16 @@
+# PHP 容器配置
+
+# 从官方基础版本构建
+FROM php:5.4-fpm
+RUN  sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list
+RUN  sed -i s@/deb.debian.org/@/mirrors.aliyun.com/@g /etc/apt/sources.list
+RUN  sed -i s@/security.debian.org/@/mirrors.163.com/@g /etc/apt/sources.list
+RUN  apt-get clean
+
+# 0.0.1 增加 bcmath, calendar, exif, gettext, sockets, dba, 
+# mysqli,, pdo_mysql 扩展
+RUN docker-php-ext-install  bcmath calendar exif gettext \
+sockets dba mysqli pcntl pdo_mysql shmop sysvmsg sysvsem sysvshm
+
+EXPOSE 9000
+CMD ["php-fpm"]
