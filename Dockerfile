@@ -12,16 +12,19 @@ FROM php:5.4-fpm
 ## bz2,gd,imagick,mcrypt,mysql,redis,soap,ssh2,xmlrpc,zip
 
 ## 0.0.1 添加 bcmath calendar exif sockets dba mysqli pcntl pdo_mysql shmop  sysvsem 
-#FROM registry.cn-hangzhou.aliyuncs.com/xuweiguo/5.4-fpm:0.0.0
-RUN docker-php-ext-install bcmath calendar exif sockets dba mysqli pcntl pdo_mysql shmop sysvsem 
+#RUN docker-php-ext-install bcmath calendar exif sockets dba mysqli pcntl pdo_mysql shmop sysvsem 
 
 ## 0.0.2 添加 bz2
-#FROM registry.cn-hangzhou.aliyuncs.com/xuweiguo/5.4-fpm:0.0.1
+#RUN apt-get update && \
+#apt-get install -y --no-install-recommends libbz2-dev && \
+#rm -r /var/lib/apt/lists/* && \
+#docker-php-ext-install bz2
+
+## full
 RUN apt-get update && \
 apt-get install -y --no-install-recommends libbz2-dev && \
 rm -r /var/lib/apt/lists/* && \
-docker-php-ext-install bz2
-
+docker-php-ext-install bcmath calendar exif sockets dba mysqli pcntl pdo_mysql shmop sysvsem bz2
 
 EXPOSE 9000
 CMD ["php-fpm"]
