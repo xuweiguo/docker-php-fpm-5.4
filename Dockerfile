@@ -17,7 +17,7 @@ RUN docker-php-ext-install bcmath calendar exif sockets dba mysqli pcntl pdo_mys
 
 ## 0.0.2 添加 bz2
 #FROM registry.cn-hangzhou.aliyuncs.com/xuweiguo/5.4-fpm:0.0.1
-#RUN apt-get update && \
+RUN apt-get update && \
 apt-get install -y --no-install-recommends libbz2-dev && \
 rm -r /var/lib/apt/lists/* && \
 docker-php-ext-install bz2
