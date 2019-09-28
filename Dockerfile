@@ -21,7 +21,7 @@ RUN apt-get update && \
 	&&  rm -r /var/lib/apt/lists/*
 
 ## 扩展安装自带
-docker-php-ext-install bcmath calendar exif sockets dba mysqli pcntl pdo_mysql shmop sysvsem bz2 ftp soap  mysql  mcrypt
+RUN docker-php-ext-install bcmath calendar exif sockets dba mysqli pcntl pdo_mysql shmop sysvsem bz2 ftp soap  mysql  mcrypt
 
 ## redis
 pecl install redis-4.3.0 && docker-php-ext-enable redis
