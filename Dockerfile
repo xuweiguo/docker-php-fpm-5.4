@@ -10,20 +10,24 @@
 ## sysvsem tokenizer xml xmlreader xmlrpc xmlwriter zip zlib
 # netselect-apt -s testing -o /etc/apt/sources.list.2
 
-FROM php:5.4-fpm 
+#FROM php:5.4-fpm 
+#
+### 附带软件安装
+#RUN apt-get update && \
+#	apt-get install -y --no-install-recommends libbz2-dev \
+#	libmcrypt-dev \
+#	libssl-dev \
+#	libmcrypt-dev \
+#	&&  rm -r /var/lib/apt/lists/*
+#
+### 扩展安装自带
+#RUN docker-php-ext-install bcmath calendar exif sockets dba mysqli 
 
-## 附带软件安装
-RUN apt-get update && \
-	apt-get install -y --no-install-recommends libbz2-dev \
-	libmcrypt-dev \
-	libssl-dev \
-	libmcrypt-dev \
-	&&  rm -r /var/lib/apt/lists/*
 
-## 扩展安装自带
-RUN docker-php-ext-install bcmath calendar exif sockets dba mysqli 
-#RUN docker-php-ext-install pcntl pdo_mysql shmop sysvsem 
-#RUN docker-php-ext-install bz2 ftp soap  mysql  mcrypt
+FROM registry.cn-hangzhou.aliyuncs.com/xuweiguo/5.4-fpm:0.0.3
+
+RUN docker-php-ext-install pcntl pdo_mysql shmop sysvsem 
+RUN docker-php-ext-install bz2 ftp soap  mysql  mcrypt
 
 ### redis
 #RUN pecl install redis-4.3.0 && docker-php-ext-enable redis
