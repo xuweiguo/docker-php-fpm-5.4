@@ -10,7 +10,7 @@
 ## sysvsem tokenizer xml xmlreader xmlrpc xmlwriter zip zlib
 # netselect-apt -s testing -o /etc/apt/sources.list.2
 
-php:5.4-fpm 
+FROM php:5.4-fpm 
 
 ## 附带软件安装
 RUN apt-get update && \
