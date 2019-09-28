@@ -27,7 +27,9 @@
 FROM registry.cn-hangzhou.aliyuncs.com/xuweiguo/5.4-fpm:0.0.3
 
 RUN docker-php-ext-install pcntl pdo_mysql shmop sysvsem 
-RUN docker-php-ext-install bz2 ftp soap  mysql  mcrypt
+#RUN docker-php-ext-install bz2 ftp soap  mysql  mcrypt
+
+#FROM registry.cn-hangzhou.aliyuncs.com/xuweiguo/5.4-fpm:0.0.4
 
 ### redis
 #RUN pecl install redis-4.3.0 && docker-php-ext-enable redis
