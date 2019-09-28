@@ -23,11 +23,14 @@
 ### 扩展安装自带
 #RUN docker-php-ext-install bcmath calendar exif sockets dba mysqli 
 
+# FROM registry.cn-hangzhou.aliyuncs.com/xuweiguo/5.4-fpm:0.0.3
+# RUN docker-php-ext-install pcntl pdo_mysql shmop sysvsem 
 
 FROM registry.cn-hangzhou.aliyuncs.com/xuweiguo/5.4-fpm:0.0.4
-
-#RUN docker-php-ext-install pcntl pdo_mysql shmop sysvsem 
-RUN docker-php-ext-install bz2 ftp soap  mysql  mcrypt
+RUN apt-get update && \
+apt-get install -y --no-install-recommends libxml2-dev libtidy-dev libxslt1-dev && \
+rm -r /var/lib/apt/lists/* && \
+docker-php-ext-install  bz2 ftp soap  mysql  mcrypt
 
 #FROM registry.cn-hangzhou.aliyuncs.com/xuweiguo/5.4-fpm:0.0.4
 
