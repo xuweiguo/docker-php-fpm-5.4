@@ -59,15 +59,15 @@ RUN wget http://www.libssh2.org/download/libssh2-1.2.9.tar.gz \
 
 ## mhash
 #RUN wget https://nchc.dl.sourceforge.net/project/mhash/mhash/0.9.9.9/mhash-0.9.9.9.tar.gz \
-&& mkdir -p /tmp/mhash \
-&& tar -xf mhash-0.9.9.9.tar.gz -C /tmp/mhash --strip-components=1 \
-&& rm mhash-0.9.9.9.tar.gz \
-&& ( \
-    cd /tmp/mhash \
-    && ./configure \
-    && make \
-    && make install \
-) \
+#&& mkdir -p /tmp/mhash \
+#&& tar -xf mhash-0.9.9.9.tar.gz -C /tmp/mhash --strip-components=1 \
+#&& rm mhash-0.9.9.9.tar.gz \
+#&& ( \
+#    cd /tmp/mhash \
+#    && ./configure \
+#    && make \
+#    && make install \
+#) \
 #&& rm -r /tmp/mhash \
 #&& docker-php-ext-configure -with-mhash=/tmp/mhash \
 #    && docker-php-ext-install /tmp/xcache \
