@@ -21,34 +21,36 @@ RUN apt-get update && \
 	&&  rm -r /var/lib/apt/lists/*
 
 ## 扩展安装自带
-RUN docker-php-ext-install bcmath calendar exif sockets dba mysqli pcntl pdo_mysql shmop sysvsem bz2 ftp soap  mysql  mcrypt
+RUN docker-php-ext-install bcmath calendar exif sockets dba mysqli 
+#RUN docker-php-ext-install pcntl pdo_mysql shmop sysvsem 
+#RUN docker-php-ext-install bz2 ftp soap  mysql  mcrypt
 
-## redis
-RUN pecl install redis-4.3.0 && docker-php-ext-enable redis
-
-# 增加 GD 扩展. 图像处理
-RUN apt-get update && \
-	apt-get install -y --no-install-recommends libfreetype6-dev libjpeg62-turbo-dev libpng-dev && \
-	rm -r /var/lib/apt/lists/* && \
-	docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && \
-	docker-php-ext-install  gd
-
-
-## ssh2
-RUN wget http://www.libssh2.org/download/libssh2-1.2.9.tar.gz \
-    && mkdir -p /tmp/libssh2 \
-    && tar -xf libssh2.tar.gz -C /tmp/libssh2 --strip-components=1 \
-    && rm libssh2.tar.gz \
-    && ( \
-        cd /tmp/libssh2 \
-        && ./configure \
-        && make \
-        && make install \
-    ) \
-    && rm -r /tmp/libssh2 \
-    && pecl install ssh2-0.13 && docker-php-ext-enable ssh2
-
-
+### redis
+#RUN pecl install redis-4.3.0 && docker-php-ext-enable redis
+#
+## 增加 GD 扩展. 图像处理
+#RUN apt-get update && \
+#	apt-get install -y --no-install-recommends libfreetype6-dev libjpeg62-turbo-dev libpng-dev && \
+#	rm -r /var/lib/apt/lists/* && \
+#	docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && \
+#	docker-php-ext-install  gd
+#
+#
+### ssh2
+#RUN wget http://www.libssh2.org/download/libssh2-1.2.9.tar.gz \
+#    && mkdir -p /tmp/libssh2 \
+#    && tar -xf libssh2.tar.gz -C /tmp/libssh2 --strip-components=1 \
+#    && rm libssh2.tar.gz \
+#    && ( \
+#        cd /tmp/libssh2 \
+#        && ./configure \
+#        && make \
+#        && make install \
+#    ) \
+#    && rm -r /tmp/libssh2 \
+#    && pecl install ssh2-0.13 && docker-php-ext-enable ssh2
+#
+#
 ## imagick 
 #RUN export CFLAGS="$PHP_CFLAGS" CPPFLAGS="$PHP_CPPFLAGS" LDFLAGS="$PHP_LDFLAGS" && \
 #	apt-get update && \
