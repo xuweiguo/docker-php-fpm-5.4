@@ -24,7 +24,7 @@ RUN apt-get update && \
 RUN docker-php-ext-install bcmath calendar exif sockets dba mysqli pcntl pdo_mysql shmop sysvsem bz2 ftp soap  mysql  mcrypt
 
 ## redis
-pecl install redis-4.3.0 && docker-php-ext-enable redis
+RUN pecl install redis-4.3.0 && docker-php-ext-enable redis
 
 # 增加 GD 扩展. 图像处理
 RUN apt-get update && \
