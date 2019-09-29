@@ -101,7 +101,6 @@ RUN set -xe; \
 
 COPY docker-php-source /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-php-source
-
 RUN set -eux; \
 	\
 	savedAptMark="$(apt-mark showmanual)"; \
@@ -189,7 +188,7 @@ COPY docker-php-ext-* docker-php-entrypoint /usr/local/bin/
 
 RUN chmod +x /usr/local/bin/docker-php-entrypoint \
 /usr/local/bin/docker-php-ext-configure \
-/usr/local/bin/docker-php-ext-enablee \
+/usr/local/bin/docker-php-ext-enable \
 /usr/local/bin/docker-php-ext-install
 
 ENTRYPOINT ["docker-php-entrypoint"]
