@@ -139,7 +139,7 @@ RUN set -eux; \
 # https://wiki.php.net/rfc/argon2_password_hash (7.2+)
 		#--with-password-argon2 \
 # https://wiki.php.net/rfc/libsodium
-		--with-sodium=shared \
+		#--with-sodium=shared \
 		\
 		--with-curl \
 		--with-libedit \
