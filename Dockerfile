@@ -35,7 +35,7 @@ RUN apt-get install -y --no-install-recommends libfreetype6-dev libjpeg62-turbo-
 	docker-php-ext-install  gd
 
 ## ssh2
-RUN apt-get install -y --no-install-recommends wget && \
+RUN apt-get install -y --no-install-recommends wget \
 	&& wget http://www.libssh2.org/download/libssh2-1.2.9.tar.gz \
     && mkdir -p /tmp/libssh2 \
     && tar -xf libssh2.tar.gz -C /tmp/libssh2 --strip-components=1 \
