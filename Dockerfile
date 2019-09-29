@@ -23,22 +23,17 @@
 FROM registry.cn-hangzhou.aliyuncs.com/xuweiguo/5.4-fpm:0.0.6
 RUN docker-php-ext-install  bcmath calendar exif sockets dba mysql mysqli pcntl pdo_mysql shmop  sysvsem 
 
-RUN apt-get update
-  	apt-get install -y --no-install-recommends libxml2-dev \
-  	rm -r /var/lib/apt/lists/* && \
+RUN apt-get update && \
+  	apt-get install -y --no-install-recommends libxml2-dev && \
   	docker-php-ext-install  soap  xmlrpc
 
-RUN apt-get update && \
-	apt-get install -y --no-install-recommends libbz2-dev libzip-dev libmcrypt-dev && \
-	rm -r /var/lib/apt/lists/* && \
+RUN apt-get install -y --no-install-recommends libbz2-dev libzip-dev libmcrypt-dev && \
 	docker-php-ext-install  bz2 zip && \
 	pecl install mcrypt-1.0.1 && \
 	docker-php-ext-enable mcrypt
 
 
-RUN apt-get update && \
-	apt-get install -y --no-install-recommends libfreetype6-dev libjpeg62-turbo-dev libpng-dev && \
-	rm -r /var/lib/apt/lists/* && \
+RUN apt-get install -y --no-install-recommends libfreetype6-dev libjpeg62-turbo-dev libpng-dev && \
 	docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && \
 	docker-php-ext-install  gd
 
@@ -59,11 +54,12 @@ RUN wget http://www.libssh2.org/download/libssh2-1.2.9.tar.gz \
 RUN pecl install redis-4.3.0 && docker-php-ext-enable redis
 
 RUN export CFLAGS="$PHP_CFLAGS" CPPFLAGS="$PHP_CPPFLAGS" LDFLAGS="$PHP_LDFLAGS" && \
-	apt-get update && \
 	apt-get install -y --no-install-recommends libmagickwand-dev && \
-	rm -rf /var/lib/apt/lists/* && \
 	pecl install imagick-3.4.3 && \
 	docker-php-ext-enable imagick
+
+
+RUN rm -r /var/lib/apt/lists/*
 
 EXPOSE 9000
 CMD ["php-fpm"]
