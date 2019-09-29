@@ -63,7 +63,7 @@ ENV PHP_LDFLAGS="-Wl,-O1 -Wl,--hash-style=both -pie"
 ENV GPG_KEYS CBAF69F173A0FEA4B537F470D66C9593118BCCB6 F38252826ACD957EF380D39F2F7956BC5DA04B5D
 
 ENV PHP_VERSION 5.4.45
-ENV PHP_URL="https://www.php.net/get/php-7.3.10.tar.xz/from/this/mirror" PHP_ASC_URL="https://www.php.net/get/php-7.3.10.tar.xz.asc/from/this/mirror"
+ENV PHP_URL="https://www.php.net/get/php-5.4.45.tar.xz/from/this/mirror" PHP_ASC_URL="https://www.php.net/get/php-5.4.45.tar.xz.asc/from/this/mirror"
 ENV PHP_SHA256="25bc4723955f4e352935258002af14a14a9810b491a19400d76fcdfa9d04b28f" PHP_MD5=""
 
 RUN set -eux; \
