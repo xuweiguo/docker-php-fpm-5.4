@@ -20,7 +20,7 @@
 #  sed -i 's/httpredir.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 
 # 1.0.0 
-FROM registry.cn-hangzhou.aliyuncs.com/xuweiguo/5.4-fpm:0.0.6
+FROM registry.cn-hangzhou.aliyuncs.com/xuweiguo/5.4-fpm:0.0.8
 RUN docker-php-ext-install  bcmath calendar exif sockets dba mysql mysqli pcntl pdo_mysql shmop  sysvsem 
 
 RUN apt-get update && \
@@ -58,6 +58,3 @@ RUN export CFLAGS="$PHP_CFLAGS" CPPFLAGS="$PHP_CPPFLAGS" LDFLAGS="$PHP_LDFLAGS" 
 
 
 RUN rm -r /var/lib/apt/lists/*
-
-EXPOSE 9000
-CMD ["php-fpm"]
