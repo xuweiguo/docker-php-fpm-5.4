@@ -21,6 +21,9 @@
 
 # 1.0.0 
 FROM registry.cn-hangzhou.aliyuncs.com/xuweiguo/5.4-fpm:0.0.8
+
+RUN chmod +x /usr/local/bin/docker-php-ext-configure /usr/local/bin/docker-php-ext-enable /usr/local/bin/docker-php-ext-install
+
 RUN docker-php-ext-install  bcmath calendar exif sockets dba mysql mysqli pcntl pdo_mysql shmop  sysvsem 
 
 RUN apt-get update && \
