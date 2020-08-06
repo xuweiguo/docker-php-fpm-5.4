@@ -1,4 +1,4 @@
-FORM registry.cn-hangzhou.aliyuncs.com/xuweiguo/5.4-fpm:0.0.9
+FROM registry.cn-hangzhou.aliyuncs.com/xuweiguo/5.4-fpm:0.0.9
 RUN apt-get update && apt-get install -y apt-transport-https
 
 RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak_20200806
